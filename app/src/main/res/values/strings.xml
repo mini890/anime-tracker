@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Pokemon Card Database</string>
+    <string name="my_deck_button">My Deck</string>
+    <string name="search_name_button">Search Name</string>
+    <string name="get_card_button">Get Card</string>
+</resources>
