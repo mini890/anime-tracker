@@ -8,9 +8,9 @@ import java.io.Serializable;
 
 public class Card implements Serializable {
 
-    protected String id, name;
+    protected String id, name, url;
 
-    public Card(String id, String name) {
+    public Card(String id, String name, String url) {
         this.id = id;
         this.name = name;
     }
@@ -33,6 +33,14 @@ public class Card implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override

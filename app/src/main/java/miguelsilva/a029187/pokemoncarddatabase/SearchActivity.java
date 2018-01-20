@@ -15,6 +15,8 @@ import miguelsilva.a029187.pokemoncarddatabase.JavaClasses.Card;
 public class SearchActivity extends ListActivity {
 
     protected ArrayList<Card> cardList;
+    protected ArrayList<String> cardStringList;
+
     protected ArrayAdapter<Card> arrayAdapter;
 
     protected Intent intent;
@@ -30,6 +32,7 @@ public class SearchActivity extends ListActivity {
 
         Bundle bundle = intent.getBundleExtra("bundledCardArrayList");
         cardList = (ArrayList<Card>) bundle.getSerializable("cardList");
+
     }
 
     @Override

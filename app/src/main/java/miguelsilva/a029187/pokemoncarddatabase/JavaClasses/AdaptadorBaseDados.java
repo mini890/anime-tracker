@@ -30,73 +30,40 @@ public class AdaptadorBaseDados {
     }
 
     private Cursor getCards() {
-        String[] colunas = new String[3];
+        String[] colunas = new String[4];
         colunas[0] = "id";
         colunas[1] = "card_id";
         colunas[2] = "card_name";
+        colunas[3] = "imageUrl";
 
-        return database.query("cards", colunas, null, null, null, null, null);
+        return database.query("deckCards", colunas, null, null, null, null, null);
     }
 
-    public List<String> getAllIds() {
-        ArrayList<String> ids = new ArrayList<String>();
+    public List<Card> getAllCards() {
+        ArrayList<Card> cards = new ArrayList<Card>();
         Cursor cursor = getCards();
         if (cursor.moveToFirst()) {
             do {
-                ids.add(cursor.getString(0));
+                cards.add(new Card(cursor.getString(1), cursor.getString(2), cursor.getString(3)));
             } while (cursor.moveToNext());
         }
 
         cursor.close();
-        return ids;
+        return cards;
     }
 
-    public List<String> getAllCardIds() {
-        ArrayList<String> ids = new ArrayList<String>();
-        Cursor cursor = getCards();
-        if (cursor.moveToFirst()) {
-            do {
-                ids.add(cursor.getString(1));
-            } while (cursor.moveToNext());
-        }
-
-        cursor.close();
-        return ids;
-    }
-
-    public List<String> getAllCardNames() {
-        ArrayList<String> ids = new ArrayList<String>();
-        Cursor cursor = getCards();
-        if (cursor.moveToFirst()) {
-            do {
-                ids.add(cursor.getString(2));
-            } while (cursor.moveToNext());
-        }
-
-        cursor.close();
-        return ids;
-    }
-
-    public boolean exists(String card_id) {
-        String[] colunas = new String[1];
-        colunas[0] = "card_id";
-        Cursor cursor = database.query("cards", colunas, "card_id", new String[]{card_id}, null, null, null);
-
-        boolean b = cursor.getCount() >= 1;
-        cursor.close();
-        return b;
-    }
-
-    public long insertCard(String card_id, String card_name) {
+    public long insertCard(String card_id, String card_name, String imageUrl) {
         ContentValues values = new ContentValues();
         values.put("card_id", card_id);
         values.put("card_name", card_name);
+        values.put("imageUrl", imageUrl);
 
-        return database.insert("cards", null, values);
+        return database.insert("deckCards", null, values);
     }
 
-    public int deleteCard(String card_id) {
-        return database.delete("cards", "card_id", new String[]{card_id});
+    public void deleteCard(String card_id) {
+        String query = "DELETE FROM deckCards WHERE card_id = '" + card_id + "';";
+        database.execSQL(query);
     }
 
 }

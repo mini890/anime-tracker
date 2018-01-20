@@ -3,4 +3,15 @@
     <string name="my_deck_button">My Deck</string>
     <string name="search_name_button">Search Name</string>
     <string name="get_card_button">Get Card</string>
+    <string name="card_id_info">Card ID:</string>
+    <string name="card_name_info">Card Name:</string>
+    <string name="pokedex_number_info">Pokedex Number:</string>
+    <string name="hp_info">HP:</string>
+    <string name="rarity_info">Rarity:</string>
+    <string name="types_info">Types:</string>
+    <string name="add_to_deck_info">Add to Deck</string>
+    <string name="card_id_deck">Card ID:</string>
+    <string name="card_name_deck">Card Name:</string>
+    <string name="go_to_card_deck">Go To Card</string>
+    <string name="remove_card_deck">Remove Card</string>
 </resources>

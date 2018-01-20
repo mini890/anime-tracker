@@ -19,7 +19,7 @@ public class AjudaUsoBaseDados extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase database) {
-        String query = "CREATE TABLE cards(id INTERGET primary key autoincrement, card_id varchar(30), card_name varchar(100);";
+        String query = "CREATE TABLE deckCards(id INTEGER primary key autoincrement, card_id varchar(30), card_name varchar(100), imageUrl varchar(255));";
 
         database.execSQL(query);
     }
